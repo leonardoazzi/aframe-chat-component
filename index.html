@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-textarea-component/dist/aframe-textarea-component.min.js"></script> -->
+    <script src="./aframe-textarea-component/index.js"></script>
+    <script type="module" src="./components/chat.js"></script>
+    <script type="text/javascript">
+        function handleEvent(oEvent){
+        }
+    </script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-assets>
+          <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+          <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        </a-assets>
+  
+
+        <a-plane src="#groundTexture" rotation="-90 0 0" height="100" width="100"></a-plane>
+        <a-light type="ambient" color="#445451"></a-light>
+        <a-light type="point" intensity="2" position="2 4 4"></a-light>
+        <a-sky height="2048" radius="30" src="#skyTexture" theta-length="90" width="2048"></a-sky>
+
+        <a-text position="-2 1 -2" value="A-Frame Chitty Chat"></a-text>
+        
+        <a-camera>
+            <a-entity id="type" chat rotation="-10 0 0" position="0 -0.6 -1" textarea="cols: 50; rows: 5; text: ; backgroundColor: #01579b; color: white; disabledBackgroundColor: red; disabled: false;"></a-entity>
+        </a-camera>
+      </a-scene>
+  </body>
+</html>
