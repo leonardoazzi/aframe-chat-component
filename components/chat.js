@@ -3,28 +3,33 @@ AFRAME.registerComponent('chat', {
     text: {type: "string", default: ""}
 	},
     init: function () {
-      console.log('init chat!');
+      console.log('init avatar-bot!');
     },
 
     update: function () {
-
       let mensagem = this.data.text;
 
       if(mensagem != ""){
+        console.log("Mensagem: " + mensagem);
         callBot(mensagem);
+
       }
-
     }
-
+    
   });
 
   export async function callBot(message){
-      queryBot({ inputs: {question: ""
-    }}).then((response) => {
+    queryBot({ inputs: {question: ""}}).then((response) => {
+      
+      // @TO-DO: adicionar response em um balão no chatlog.
       console.log(response);
     
     });
   }
+
+  // --------------------------------------------------------
+  // @ANDRE: paramos aqui na nossa última reunião de trabalho
+  // --------------------------------------------------------
 
   export async function queryBot(data) {
     // const response = await fetch(
