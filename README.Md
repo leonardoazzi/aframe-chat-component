@@ -36,7 +36,7 @@ Use by directly including the browser files:
 <head>
   <title>My Chitty Chat A-Frame</title>
   <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-  <script type="module" src="./components/chat.js"></script>
+  <script type="module" src="./aframe-chat-component/index.js"></script>
   <script src="./aframe-textarea-component/index.js"></script>
 </head>
 
