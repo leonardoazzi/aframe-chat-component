@@ -52,9 +52,10 @@ AFRAME.registerComponent('chat', {
 
   export async function callBot(message){
 
-    queryBot({ inputs: {question: message, 
-                        context: JSON.stringify(corpus)
-    }}).then((response) => {
+    queryBot({ inputs: {message: message
+                        
+    }})
+    .then((response) => {
 
       // @TO-DO: adicionar response em um balão no chatlog.
       console.log(response);
@@ -65,6 +66,12 @@ AFRAME.registerComponent('chat', {
 
       console.log("Resposta: " + response.answer);
 
+    })
+    .then(function(data) {
+        console.log('Request succeeded with JSON response', data);
+    })
+    .catch(function(error) {
+        console.log('Request failed', error);
     });
 
   }
@@ -75,14 +82,17 @@ AFRAME.registerComponent('chat', {
 
   export async function queryBot(data) {
     const response = await fetch(
-        "https://api-inference.huggingface.co/models/pierreguillou/bert-base-cased-squad-v1.1-portuguese",
+        "https://rasabert.paas.dbserver.com.br/webhooks/rest/webhook",
         {
-            headers: { Authorization: `Bearer ${"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"}` },
+            headers: { Authorization: "application/json", "Access-Control-Allow-Origin": "*"},
+            sender: "test_user",
             method: "POST",
-            body: JSON.stringify(data),
+            // mode: "no-cors",
+            message: data,
         }
     );
     const result = await response.json();
+    console.log(result)
     return result;
 
     // const response = await fetch(
